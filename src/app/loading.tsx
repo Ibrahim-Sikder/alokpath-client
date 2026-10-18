@@ -1,0 +1,19 @@
+// "use client";
+
+// import dynamic from "next/dynamic";
+import Loading from "@/components/Share/_components/Loading";
+import React from "react";
+
+// const Loader = dynamic(() => import("@/components/Share/_components/Loading"), {
+//   ssr: false,
+// });
+
+const loading = () => {
+  return (
+    <div className="fixed inset-0 z-[99999999999999] flex items-center justify-center bg-white ">
+      <Loading />
+    </div>
+  );
+};
+
+export default loading;
