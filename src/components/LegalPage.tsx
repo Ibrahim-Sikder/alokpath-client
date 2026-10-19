@@ -59,7 +59,7 @@ export function LegalPage({
                         {sections.map((s, i) => (
                             <section key={s.id} id={s.id}>
                                 <div className="mb-3 flex items-start gap-3">
-                                    <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-primary/15 text-[12px] font-bold text-primary">
+                                    <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-lg text-[12px] font-bold text-primary">
                                         {i + 1}
                                     </span>
                                     <h2 className="text-lg font-bold tracking-tight text-foreground sm:text-xl">{s.title}</h2>
@@ -70,7 +70,7 @@ export function LegalPage({
                     </div>
 
                     {note && (
-                        <Card className="mt-10 border-primary/30 bg-primary/[0.06] p-5 text-sm leading-relaxed text-muted-foreground">
+                        <Card className="mt-10 border-primary/30  p-5 text-sm leading-relaxed text-muted-foreground">
                             {note}
                         </Card>
                     )}
