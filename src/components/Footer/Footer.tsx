@@ -32,6 +32,15 @@ const otherLinks = [
   { href: "/religion", label: "ধর্ম" },
 ];
 
+// 👇 নতুন — প্রতিষ্ঠান সেকশন
+const companyLinks = [
+  { href: "/about", label: "About Alokpath" },
+  { href: "/about-us", label: "About Us" },
+  { href: "/team", label: "Our Team" },
+  { href: "/policies", label: "Policies & Contact" },
+  { href: "/contact", label: "Contact Us" },
+];
+
 const policyLinks = [
   { href: "/privacy-policy", label: "Privacy Policy" },
   { href: "/terms", label: "Terms & Conditions" },
@@ -45,7 +54,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        {/* ===== TOP: Logo+Social (left) | Policies (right) ===== */}
+        {/* ===== TOP: Logo+Social (left) | প্রতিষ্ঠান + নীতিমালা (right) ===== */}
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-16 pb-10 border-b border-gray-800">
           {/* LEFT — Logo + tagline + social */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left shrink-0">
@@ -95,7 +104,6 @@ const Footer = () => {
               সত্যের সন্ধানে সব সময়
             </p>
 
-            {/* ✨ Social icons — refined */}
             <div className="flex items-center gap-2.5 mt-5">
               {socialLinks.map((link) => (
                 <Link
@@ -107,7 +115,6 @@ const Footer = () => {
                   className={`group relative flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 border border-white/15 text-white/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${link.hoverColor}`}
                 >
                   {link.icon}
-                  {/* Tooltip label */}
                   <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-white text-black text-[11px] font-semibold px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md">
                     {link.label}
                   </span>
@@ -116,27 +123,48 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* RIGHT — Policies (flex) */}
-          <div className="w-full lg:max-w-4xl flex flex-col items-center lg:items-end">
-            <h2 className="font-bold text-lg sm:text-xl">নীতিমালা</h2>
-            <div className="flex justify-center lg:justify-end">
-              <hr className="my-3 border-gray-700 w-[80px] lg:w-[120px]" />
+          {/* RIGHT — প্রতিষ্ঠান + নীতিমালা (দুই কলাম) */}
+          <div className="w-full lg:max-w-3xl flex flex-col sm:flex-row items-center sm:items-start justify-center lg:justify-end gap-10 sm:gap-14 text-center sm:text-right">
+
+            {/* প্রতিষ্ঠান */}
+            <div className="flex flex-col items-center sm:items-end">
+              <h2 className="font-bold text-lg sm:text-xl">প্রতিষ্ঠান</h2>
+              <div className="flex justify-center sm:justify-end">
+                <hr className="my-3 border-gray-700 w-[80px] sm:w-[120px]" />
+              </div>
+              <ul className="flex flex-col gap-2 text-xs sm:text-sm text-gray-300 items-center sm:items-end">
+                {companyLinks.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className="hover:text-red-500 transition-colors duration-300">
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="flex flex-wrap justify-center lg:justify-end gap-x-6 gap-y-3 text-xs sm:text-sm text-gray-300">
-              {policyLinks.map((l) => (
-                <li key={l.href} className="flex items-center">
-                  <Link href={l.href} className="hover:text-red-500 transition-colors duration-300">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+
+            {/* নীতিমালা */}
+            <div className="flex flex-col items-center sm:items-end">
+              <h2 className="font-bold text-lg sm:text-xl">নীতিমালা</h2>
+              <div className="flex justify-center sm:justify-end">
+                <hr className="my-3 border-gray-700 w-[80px] sm:w-[120px]" />
+              </div>
+              <ul className="flex flex-col gap-2 text-xs sm:text-sm text-gray-300 items-center sm:items-end">
+                {policyLinks.map((l) => (
+                  <li key={l.href}>
+                    <Link href={l.href} className="hover:text-red-500 transition-colors duration-300">
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
           </div>
         </div>
 
-        {/* ===== MIDDLE: 4 columns — সব flex ===== */}
+        {/* ===== MIDDLE: ক্যাটাগরি + যোগাযোগ ===== */}
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-6 mt-10 text-center lg:text-left">
-          {/* সাম্প্রতিক খবর */}
           <div className="flex flex-col items-center lg:items-start w-full lg:w-auto">
             <h2 className="font-bold text-lg sm:text-xl">সাম্প্রতিক খবর</h2>
             <div className="flex justify-center lg:justify-start">
@@ -153,7 +181,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* বিভাগসমূহ */}
           <div className="flex flex-col items-center lg:items-start w-full lg:w-auto">
             <h2 className="font-bold text-lg sm:text-xl">বিভাগসমূহ</h2>
             <div className="flex justify-center lg:justify-start">
@@ -170,7 +197,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* অন্য বিভাগ */}
           <div className="flex flex-col items-center lg:items-start w-full lg:w-auto">
             <h2 className="font-bold text-lg sm:text-xl">অন্য বিভাগ</h2>
             <div className="flex justify-center lg:justify-start">
@@ -187,7 +213,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* যোগাযোগ */}
           <div className="flex flex-col items-center lg:items-start w-full lg:w-auto">
             <h2 className="font-bold text-lg sm:text-xl">যোগাযোগ</h2>
             <div className="flex justify-center lg:justify-start">
